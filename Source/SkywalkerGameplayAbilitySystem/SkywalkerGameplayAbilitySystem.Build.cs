@@ -38,6 +38,9 @@ public class SkywalkerGameplayAbilitySystem : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+                "GameplayAbilities",
+                "GameplayTags",
+                "GameplayTasks",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
