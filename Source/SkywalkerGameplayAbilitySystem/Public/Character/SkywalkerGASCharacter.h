@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "AbilitySystemInterface.h"
+#include "AbilitySystemComponent.h"
 
 #include "SkywalkerGASCharacter.generated.h"
 
@@ -30,10 +31,10 @@ public:
 
 #pragma region Ability System Component
 	
-private:
+public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkywalkerGAS")
 		UAbilitySystemComponent* AbilitySystemComponent;
-public:
+	
 	static FName AbilitySystemComponentName;
 
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override ;
