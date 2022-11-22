@@ -42,4 +42,21 @@ UAbilitySystemComponent* ASkywalkerGASCharacter::GetAbilitySystemComponent() con
 	return AbilitySystemComponent;
 }
 
+void ASkywalkerGASCharacter::AddAbility(TSubclassOf<UGameplayAbility> AbilityToAdd)
+{
+	if (AbilitySystemComponent == nullptr)
+	{
+		return;
+	}
+
+	if (AbilityToAdd == nullptr)
+	{
+		return;
+	}
+	
+	AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(AbilityToAdd, 1));
+	
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+}
+
 #pragma endregion

@@ -32,12 +32,19 @@ public:
 #pragma region Ability System Component
 	
 public:
+	// Ability System Component 名称
+	static FName AbilitySystemComponentName;
+
+	// Ability System Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkywalkerGAS")
 		UAbilitySystemComponent* AbilitySystemComponent;
 	
-	static FName AbilitySystemComponentName;
+	// 获取 Ability System Component
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override ;
+	// 给 Ability System Component 添加 Ability
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
+		void AddAbility(TSubclassOf<UGameplayAbility> AbilityToAdd);
 	
 #pragma endregion
 };
