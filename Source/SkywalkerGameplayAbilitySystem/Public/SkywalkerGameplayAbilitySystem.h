@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
+#include "GameplayCueManager.h"
+#include "AbilitySystemGlobals.h"
 
 class FSkywalkerGameplayAbilitySystemModule : public IModuleInterface
 {
