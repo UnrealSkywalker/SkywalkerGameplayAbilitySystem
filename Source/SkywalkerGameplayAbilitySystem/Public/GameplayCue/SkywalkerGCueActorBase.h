@@ -4,13 +4,13 @@
 
 #include "CoreMinimal.h"
 #include "GameplayCueNotify_Actor.h"
-#include "SkywalkerGCueBase.generated.h"
+#include "SkywalkerGCueActorBase.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class SKYWALKERGAMEPLAYABILITYSYSTEM_API ASkywalkerGCueBase : public AGameplayCueNotify_Actor
+class SKYWALKERGAMEPLAYABILITYSYSTEM_API ASkywalkerGCueActorBase : public AGameplayCueNotify_Actor
 {
 	GENERATED_BODY()
 	
