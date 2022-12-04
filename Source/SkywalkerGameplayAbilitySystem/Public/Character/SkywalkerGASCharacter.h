@@ -7,6 +7,8 @@
 #include "AbilitySystemInterface.h"
 #include "AbilitySystemComponent.h"
 
+#include "AbilitySystemComponent/SkywalkerAbilitySystemComponent.h"
+
 #include "SkywalkerGASCharacter.generated.h"
 
 UCLASS()
@@ -37,10 +39,10 @@ public:
 
 	// Ability System Component
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkywalkerGAS")
-		UAbilitySystemComponent* AbilitySystemComponent;
+		USkywalkerAbilitySystemComponent* AbilitySystemComponent;
 	
 	// 获取 Ability System Component
-	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+	virtual USkywalkerAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	// 给 Ability System Component 添加 Ability
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
