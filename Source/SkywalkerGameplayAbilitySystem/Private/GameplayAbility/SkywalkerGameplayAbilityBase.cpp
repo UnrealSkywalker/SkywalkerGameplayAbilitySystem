@@ -3,3 +3,5 @@
 
 #include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
 
+USkywalkerGameplayAbilityBase::USkywalkerGameplayAbilityBase()
+{}

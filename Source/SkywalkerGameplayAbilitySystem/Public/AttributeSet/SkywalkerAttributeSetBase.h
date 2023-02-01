@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "AttributeSet.h"
+#include "SkywalkerAttributeSet.h"
 #include "AbilitySystemComponent.h"
 #include "Net/UnrealNetwork.h"
 
@@ -19,11 +19,11 @@
  * 
  */
 UCLASS()
-class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAttributeSetBase : public UAttributeSet
+class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAttributeSetBase : public USkywalkerAttributeSet
 {
 	GENERATED_BODY()
+		
 public:
-	USkywalkerAttributeSetBase();
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 

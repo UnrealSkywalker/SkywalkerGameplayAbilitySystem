@@ -8,6 +8,7 @@
 #include "AbilitySystemComponent.h"
 
 #include "AbilitySystemComponent/SkywalkerAbilitySystemComponent.h"
+#include "AttributeSet/SkywalkerAttributeSetBase.h"
 
 #include "SkywalkerGASCharacter.generated.h"
 
@@ -31,6 +32,25 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+#pragma region AttributeSet
+	
+private:
+	
+	void InitAttributeSet();
+	
+public:
+
+	// 基础属性
+	static FName BaseAttributeName;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "SkywalkerGAS|AttributeSet")
+		USkywalkerAttributeSetBase* AttributeSetBase;
+	
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|AttributeSet")
+		USkywalkerAttributeSetBase* GetAttributeSetBase() const;
+
+#pragma endregion
+
 #pragma region Ability System Component
 	
 public:
@@ -47,6 +67,10 @@ public:
 	// 给 Ability System Component 添加 Ability
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
 		void AddAbility(TSubclassOf<UGameplayAbility> AbilityToAdd);
+
+	// 给 Ability System Component 添加 Ability
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
+		void AddAbilityByObject(UGameplayAbility* AbilityToAdd);
 	
 #pragma endregion
 };

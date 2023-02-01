@@ -3,11 +3,6 @@
 
 #include "AttributeSet/SkywalkerAttributeSetBase.h"
 
-USkywalkerAttributeSetBase::USkywalkerAttributeSetBase()
-{
-	
-}
-
 void USkywalkerAttributeSetBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

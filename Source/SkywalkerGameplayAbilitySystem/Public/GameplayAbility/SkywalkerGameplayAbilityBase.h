@@ -13,5 +13,8 @@ UCLASS()
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerGameplayAbilityBase : public UGameplayAbility
 {
 	GENERATED_BODY()
+
+public:
 	
+	USkywalkerGameplayAbilityBase();
 };
