@@ -19,17 +19,6 @@ enum class ESkywalkerSkillMainType : uint8
 	Assist,		// 辅助技能
 };
 
-// Skywalker 技能子类型
-UENUM(BlueprintType)
-enum class ESkywalkerSkillSubType : uint8
-{
-	Invalid = 0,	// 无效
-	Attack,		// 攻击技能
-	Defense,	// 防御技能
-	Heal,		// 治疗技能
-	Control,	// 控制技能
-};
-
 // Skywalker 技能标签
 UENUM(BlueprintType)
 enum class ESkywalkerSkillTag : uint8
