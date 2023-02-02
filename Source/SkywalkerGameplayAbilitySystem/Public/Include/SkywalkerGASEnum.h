@@ -29,5 +29,17 @@ enum class ESkywalkerSkillTag : uint8
 	// 范围
 	RangeTarget,
 	
-	// 
+	// 元素类型
 };
+
+
+#pragma region 技能效果相关宏
+
+// Skywalker 技能效果类型
+UENUM(BlueprintType)
+enum class ESkywalkerSkillEffectType : uint8
+{
+	Invalid = 0,	// 无效
+};
+
+#pragma endregion
