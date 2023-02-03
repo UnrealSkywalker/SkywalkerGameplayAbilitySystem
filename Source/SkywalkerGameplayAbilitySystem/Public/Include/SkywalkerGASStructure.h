@@ -13,21 +13,41 @@
 
 #include "SkywalkerGASStructure.generated.h"
 
-#pragma region 技能效果结构体
+#pragma region 技能属性结构体
 
-// Skywalker 技能效果结构体
+// Skywalker 技能属性结构体
 USTRUCT(BlueprintType)
-struct FSkywalkerSkillEffect
+struct FSkywalkerSkillAttribute
 {
 	GENERATED_USTRUCT_BODY()
 
-		// 技能效果类型
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillEffect")
-		ESkywalkerSkillEffectType SkillEffectType;
+#pragma region 属性
+		
+	// 技能效果类型
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute")
+		ESkywalkerSkillAttributeType AttributeType;
 
 	// 技能效果值
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillEffect")
-		int32 SkillEffectValue;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute")
+		int32 AttributeValue;
+	
+#pragma endregion
+
+#pragma region 函数
+
+	// 两个属性是否是同一种属性
+	bool IsSameAttribute(const FSkywalkerSkillAttribute& OtherAttribute) const
+	{
+		return AttributeType == OtherAttribute.AttributeType;
+	}
+	
+	bool IsSameAttribute(const ESkywalkerSkillAttributeType OtherAttributeType) const
+	{
+		return AttributeType == OtherAttributeType;
+	}
+	
+#pragma endregion
+
 };
 
 #pragma endregion
