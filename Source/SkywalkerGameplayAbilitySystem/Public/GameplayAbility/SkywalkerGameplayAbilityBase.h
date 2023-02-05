@@ -6,6 +6,7 @@
 #include "Abilities/GameplayAbility.h"
 
 #include "SkillAttributeSet/SkywalkerSkillAttributeSet.h"
+#include "Include/SkywalkerGASEnum.h"
 
 #include "SkywalkerGameplayAbilityBase.generated.h"
 
@@ -19,39 +20,25 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerGameplayAbilityBase : public 
 
 public:
 	
-	USkywalkerGameplayAbilityBase();
+	USkywalkerGameplayAbilityBase(const FObjectInitializer& ObjectInitializer);
 
 #pragma region 技能属性
 
 protected:
-
-	// 技能ID
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute", meta = (AllowPrivateAccess = "true"))
-		int32 SkillID;
-	
-	// 技能等级
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute", meta = (AllowPrivateAccess = "true"))
-		int32 SkillLevel;
-
-	// 技能等级属性集
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute", meta = (AllowPrivateAccess = "true"))
-		USkywalkerSkillAttributeSet* SkillLevelAttributeSet;
-	
-	// 辅助技能属性集
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillAttribute", meta = (AllowPrivateAccess = "true"))
-		USkywalkerSkillAttributeSet* AssistSkillAttributeSet;
+	// 技能属性集
+	USkywalkerSkillAttributeSet* SkillAttributeSet;
 public:
 	// 设置技能等级属性集
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		void SetSkillLevelAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet);
-	
-	// 清理辅助技能属性集
-	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		void ClearAssistSkillAttributeSet();
+		void SetSkillAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet);
 
-	// 增加辅助技能属性集
+	// 清理技能属性集
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		void AddAssistSkillAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet);
+		void ClearSkillAttributeSet();
+
+	// 获取某个技能属性的值
+	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
+		int32 GetSkillAttributeValue(ESkywalkerSkillAttributeType SkillAttributeType);
 #pragma endregion
 
 };

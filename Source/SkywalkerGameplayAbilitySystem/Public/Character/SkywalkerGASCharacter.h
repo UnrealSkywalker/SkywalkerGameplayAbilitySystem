@@ -68,9 +68,5 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
 		void AddAbility(TSubclassOf<UGameplayAbility> AbilityToAdd);
 
-	// 给 Ability System Component 添加 Ability
-	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS")
-		void AddAbilityByObject(UGameplayAbility* AbilityToAdd);
-	
 #pragma endregion
 };

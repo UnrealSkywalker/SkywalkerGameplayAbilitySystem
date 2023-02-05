@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
 
-#include "include/SkywalkerGASEnum.h"
+#include "Include/SkywalkerGASEnum.h"
 #include "Include/SkywalkerGASStructure.h"
 
 #include "SkywalkerSkillAttributeSet.generated.h"
@@ -40,10 +40,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
 		void RemoveSkillAttribute(ESkywalkerSkillAttributeType AttributeType);
 
-	// 获取技能属性
-	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		FSkywalkerSkillAttribute GetSkillAttribute(ESkywalkerSkillAttributeType AttributeType);
-
 	// 获取技能属性列表
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
 		TArray<FSkywalkerSkillAttribute> GetSkillAttributeList();
@@ -59,4 +55,8 @@ public:
 	// 是否有某个属性
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
 		bool HasSkillAttribute(ESkywalkerSkillAttributeType AttributeType);
+
+	// 后的某个属性值
+	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
+		int32 GetSkillAttributeValue(ESkywalkerSkillAttributeType AttributeType);
 };

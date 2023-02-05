@@ -4,6 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
+
+#include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
+#include "SkillAttributeSet/SkywalkerSkillAttributeSet.h"
+#include "Include/SkywalkerGASEnum.h"
+
 #include "SkywalkerAbilitySystemComponent.generated.h"
 
 /**
@@ -14,4 +19,8 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : publ
 {
 	GENERATED_BODY()
 	
+public:
+	// 增加技能
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
+		FGameplayAbilitySpecHandle AddAbility(TSubclassOf<USkywalkerGameplayAbilityBase> AddAbilityClass);
 };

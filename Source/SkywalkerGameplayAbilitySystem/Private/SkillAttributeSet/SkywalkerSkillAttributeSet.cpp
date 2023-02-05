@@ -57,19 +57,6 @@ void USkywalkerSkillAttributeSet::RemoveSkillAttribute(ESkywalkerSkillAttributeT
 	}
 }
 
-// 获取技能属性
-FSkywalkerSkillAttribute USkywalkerSkillAttributeSet::GetSkillAttribute(ESkywalkerSkillAttributeType AttributeType)
-{
-	for (int32 i = 0; i < SkillAttributeList.Num(); i++)
-	{
-		if (SkillAttributeList[i].AttributeType == AttributeType)
-		{
-			return SkillAttributeList[i];
-		}
-	}
-	return FSkywalkerSkillAttribute();
-}
-
 // 获取技能属性列表
 TArray<FSkywalkerSkillAttribute> USkywalkerSkillAttributeSet::GetSkillAttributeList()
 {
@@ -85,10 +72,14 @@ void USkywalkerSkillAttributeSet::ClearSkillAttributeList()
 // 拷贝其他的技能属性集
 void USkywalkerSkillAttributeSet::CopyFrom(USkywalkerSkillAttributeSet* OtherSkillAttributeSet)
 {
-	if (OtherSkillAttributeSet)
+	if (OtherSkillAttributeSet == nullptr)
 	{
-		SkillAttributeList = OtherSkillAttributeSet->GetSkillAttributeList();
+		return;
 	}
+
+	ClearSkillAttributeList();
+	
+	AddSkillAttributeSet(OtherSkillAttributeSet);
 }
 
 // 是否有某个属性
@@ -102,4 +93,18 @@ bool USkywalkerSkillAttributeSet::HasSkillAttribute(ESkywalkerSkillAttributeType
 		}
 	}
 	return false;
+}
+
+// 获得某个属性的值
+int32 USkywalkerSkillAttributeSet::GetSkillAttributeValue(ESkywalkerSkillAttributeType AttributeType)
+{
+	for (int32 i = 0; i < SkillAttributeList.Num(); i++)
+	{
+		if (SkillAttributeList[i].IsSameAttribute( AttributeType))
+		{
+			return SkillAttributeList[i].AttributeValue;
+		}
+	}
+	
+	return 0;
 }

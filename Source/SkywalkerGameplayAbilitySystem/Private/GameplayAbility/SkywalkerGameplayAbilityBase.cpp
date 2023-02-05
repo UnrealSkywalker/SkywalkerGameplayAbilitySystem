@@ -3,31 +3,33 @@
 
 #include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
 
-USkywalkerGameplayAbilityBase::USkywalkerGameplayAbilityBase()
+USkywalkerGameplayAbilityBase::USkywalkerGameplayAbilityBase(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
-	SkillLevelAttributeSet = NewObject<USkywalkerSkillAttributeSet>();
-	AssistSkillAttributeSet = NewObject<USkywalkerSkillAttributeSet>();
+	InstancingPolicy = EGameplayAbilityInstancingPolicy::NonInstanced;
+
+	SkillAttributeSet = NewObject<USkywalkerSkillAttributeSet>();
 }
 
 #pragma region 技能属性
 
 // 设置技能等级属性集
-void USkywalkerGameplayAbilityBase::SetSkillLevelAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet)
+void USkywalkerGameplayAbilityBase::SetSkillAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet)
 {
 	// 拷贝属性集
-	this->SkillLevelAttributeSet->CopyFrom(OtherSkillAttributeSet);
+	SkillAttributeSet->CopyFrom(OtherSkillAttributeSet);
 }
 
-// 清理辅助技能属性集
-void USkywalkerGameplayAbilityBase::ClearAssistSkillAttributeSet()
+// 清理技能属性集
+void USkywalkerGameplayAbilityBase::ClearSkillAttributeSet()
 {
-	AssistSkillAttributeSet->ClearSkillAttributeList();
+	SkillAttributeSet->ClearSkillAttributeList();
 }
 
-// 增加辅助技能属性集
-void USkywalkerGameplayAbilityBase::AddAssistSkillAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet)
+// 获取某个技能属性的值
+int32 USkywalkerGameplayAbilityBase::GetSkillAttributeValue(ESkywalkerSkillAttributeType SkillAttributeType)
 {
-	AssistSkillAttributeSet->AddSkillAttributeSet(OtherSkillAttributeSet);
+	return SkillAttributeSet->GetSkillAttributeValue(SkillAttributeType);
 }
 
 #pragma endregion

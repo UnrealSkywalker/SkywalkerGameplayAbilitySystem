@@ -40,6 +40,8 @@ UENUM(BlueprintType)
 enum class ESkywalkerSkillAttributeType : uint8
 {
 	Invalid = 0,	// 无效
+	// 投掷物数量
+	ProjectileCount,
 };
 
 #pragma endregion
