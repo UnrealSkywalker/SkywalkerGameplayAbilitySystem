@@ -13,23 +13,26 @@
 UENUM(BlueprintType)
 enum class ESkywalkerSkillMainType : uint8
 {
-	Invalid = 0,	// 无效
-	Active,		// 主动技能
-	Passive,	// 被动技能
-	Assist,		// 辅助技能
+	// 无效
+	Invalid = 0,
+	// 主动技能
+	Active,
+	// 被动技能
+	Passive,
+	// 辅助技能
+	Assist,
 };
 
 // Skywalker 技能标签
 UENUM(BlueprintType)
 enum class ESkywalkerSkillTag : uint8
 {
-	Invaild = 0,	// 无效标签
+	// 无效标签
+	Invaild = 0,
 	// 单体
 	SingleTarget = 1,
 	// 范围
 	RangeTarget,
-	
-	// 元素类型
 };
 
 
@@ -39,7 +42,8 @@ enum class ESkywalkerSkillTag : uint8
 UENUM(BlueprintType)
 enum class ESkywalkerSkillAttributeType : uint8
 {
-	Invalid = 0,	// 无效
+	// 无效
+	Invalid = 0,
 	// 投掷物数量
 	ProjectileCount,
 };
