@@ -60,19 +60,20 @@ USTRUCT(BlueprintType)
 struct FSkywalkerSkillDataTable:public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
+		FSkywalkerSkillDataTable(){}
 
 #pragma region 属性
 		
 	// 技能ID
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 ID;
 
 	// 技能主类型
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		ESkywalkerSkillMainType MainType;
 
 	// 技能标签
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSet<ESkywalkerSkillTag> SkillTags;
 
 #pragma endregion
@@ -88,15 +89,16 @@ USTRUCT(BlueprintType)
 struct FSkywalkerSkillLevelTable:public FTableRowBase
 {
 	GENERATED_USTRUCT_BODY()
+		FSkywalkerSkillLevelTable(){}
 		
 #pragma region 属性
 
 	// ID，规则：技能ID*1000 + 等级
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillLevelData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 ID;
 	
 	// 技能属性列表
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Skywalker|SkillLevelData")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TArray<FSkywalkerSkillAttribute> SkillAttributes;
 #pragma endregion
 
