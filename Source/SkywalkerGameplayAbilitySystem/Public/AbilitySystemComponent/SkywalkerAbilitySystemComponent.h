@@ -6,7 +6,7 @@
 #include "AbilitySystemComponent.h"
 
 #include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
-#include "SkillAttributeSet/SkywalkerSkillAttributeSet.h"
+#include "SkillAttribute/SkywalkerSkillAttributeSet.h"
 #include "Include/SkywalkerGASEnum.h"
 
 #include "SkywalkerAbilitySystemComponent.generated.h"

@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
 
-#include "SkillAttributeSet/SkywalkerSkillAttributeSet.h"
+#include "SkillAttribute/SkywalkerSkillAttributeSet.h"
 #include "Include/SkywalkerGASEnum.h"
 
 #include "SkywalkerGameplayAbilityBase.generated.h"
