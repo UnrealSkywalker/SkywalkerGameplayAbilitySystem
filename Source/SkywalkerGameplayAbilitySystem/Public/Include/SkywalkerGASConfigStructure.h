@@ -36,9 +36,19 @@ struct FSkywalkerSkillDataTable:public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		TSet<ESkywalkerSkillTag> SkillTags;
 
+	// GameplayAbility类
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		TSubclassOf<class USkywalkerGameplayAbilityBase> GameplayAbilityClass;
+
 #pragma endregion
 
 #pragma region 函数
+
+	// 获取技能ID
+	int32 GetSkillID() const
+	{
+		return ID;
+	}
 
 #pragma endregion
 

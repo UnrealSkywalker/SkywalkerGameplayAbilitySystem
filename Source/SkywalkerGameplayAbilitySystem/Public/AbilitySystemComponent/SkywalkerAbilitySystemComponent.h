@@ -5,11 +5,16 @@
 #include "CoreMinimal.h"
 #include "AbilitySystemComponent.h"
 
+#include "Include/SkywalkerGASEnum.h"
+#include "Include/SkywalkerGASConfigStructure.h"
+
 #include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
 #include "SkillAttribute/SkywalkerSkillAttributeSet.h"
-#include "Include/SkywalkerGASEnum.h"
+#include "Skill/SkywalkerSkill.h"
 
 #include "SkywalkerAbilitySystemComponent.generated.h"
+
+typedef TMap<int32, USkywalkerSkill*> SkywalkerSkillMap;
 
 /**
  * 
@@ -20,7 +25,35 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : publ
 	GENERATED_BODY()
 	
 public:
+	
 	// 增加技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
-		FGameplayAbilitySpecHandle AddAbility(TSubclassOf<USkywalkerGameplayAbilityBase> AddAbilityClass);
+		FGameplayAbilitySpecHandle AddAbilityByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
+	
+	// 移除技能
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
+		void RemoveAbility(const FGameplayAbilitySpecHandle& AbilityHandle);
+	
+#pragma region Skywalker Skill
+private:
+	
+	// 拥有的技能列表
+	SkywalkerSkillMap HasSkillMap;
+
+public:
+	
+	// 通过技能配置和等级配置增加技能
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
+		void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
+
+	// 移除技能
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
+		void RemoveSkill(int32 SkillID);
+
+	// 通过技能ID获取技能
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
+		USkywalkerSkill* GetSkillByID(int32 SkillID) const;
+
+#pragma endregion
+	
 };
