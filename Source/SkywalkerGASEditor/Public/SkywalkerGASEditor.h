@@ -12,4 +12,11 @@ public:
 	/** IModuleInterface implementation */
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
+
+private:
+	/** 在 LevelEditor.MainMenu 中添加打开技能编辑器界面的Btn */
+	void AddOpenGASEditorViewButton();
+
+	/** 打开技能编辑器界面 */
+	void ActionOpenGASEditorView();
 };

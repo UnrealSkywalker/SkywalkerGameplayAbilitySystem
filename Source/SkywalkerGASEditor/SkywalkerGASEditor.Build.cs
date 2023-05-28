@@ -34,10 +34,13 @@ public class SkywalkerGASEditor : ModuleRules
 		PrivateDependencyModuleNames.AddRange(
 			new string[]
 			{
+				"Core",
 				"CoreUObject",
 				"Engine",
-				"Slate",
+				"InputCore",
 				"SlateCore",
+				"Slate",
+				"ToolMenus",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);
