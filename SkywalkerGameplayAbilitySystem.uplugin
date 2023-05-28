@@ -19,6 +19,11 @@
 			"Name": "SkywalkerGameplayAbilitySystem",
 			"Type": "Runtime",
 			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "SkywalkerGASEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
 		}
 	],
 
