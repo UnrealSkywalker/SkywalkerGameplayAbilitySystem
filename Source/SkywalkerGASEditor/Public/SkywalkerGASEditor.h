@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+#include "EditorView/SkywalkerGASEditorView.h"
+
 class FSkywalkerGASEditorModule : public IModuleInterface
 {
 public:
@@ -19,4 +21,8 @@ private:
 
 	/** 打开技能编辑器界面 */
 	void ActionOpenGASEditorView();
+	
+private:
+
+	CSkywalkerGASEditorView SkywalkerGASEditorView;
 };

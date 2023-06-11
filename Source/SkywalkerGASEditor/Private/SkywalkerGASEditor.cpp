@@ -9,6 +9,7 @@
 
 void FSkywalkerGASEditorModule::StartupModule()
 {
+	SkywalkerGASEditorView.Create();
 	AddOpenGASEditorViewButton();
 }
 
@@ -56,34 +57,7 @@ void FSkywalkerGASEditorModule::AddOpenGASEditorViewButton()
 
 void FSkywalkerGASEditorModule::ActionOpenGASEditorView()
 {
-	// 创建新窗口
-	TSharedRef<SWindow> Window = SNew(SWindow)
-		.Title(FText::FromString("Alice Window"))
-		.SizingRule(ESizingRule::UserSized)
-		.ClientSize(FVector2D(1000.f, 700.f))
-		.AutoCenter(EAutoCenter::PreferredWorkArea)
-		.ScreenPosition(FVector2D(0, 0))
-		.IsEnabled(true)
-		.SupportsMinimize(true)
-		.SupportsMaximize(true);
-
-	// 设置窗口内容
-	Window->SetContent
-	(
-		SNew(SConstraintCanvas)
-		+ SConstraintCanvas::Slot()
-		.Alignment(0.5f)
-		.Anchors(0.5f)
-		.Offset(FMargin(0.0f, 0.0f, 300.f, 100.f))
-		.AutoSize(true)
-		[
-			SNew(STextBlock)
-			.Text(FText::FromString("Hello, Alice Window !"))
-		]
-	);
-
-	// 显示新窗口
-	FSlateApplication::Get().AddWindow(Window);
+	SkywalkerGASEditorView.OnShow();
 }
 
 #undef LOCTEXT_NAMESPACE
