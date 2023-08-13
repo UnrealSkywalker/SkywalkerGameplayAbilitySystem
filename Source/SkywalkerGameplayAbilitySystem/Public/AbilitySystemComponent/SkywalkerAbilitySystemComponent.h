@@ -46,6 +46,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
 		void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
 
+	/**
+	* 通过技能等级ID增加技能
+	* @param	InSkillLevelID	技能等级ID
+	*/
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
+		void AddSkillByLevelID(int32 InSkillLevelID);
+
 	// 移除技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
 		void RemoveSkill(int32 SkillID);

@@ -65,6 +65,39 @@ void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDat
 	}
 }
 
+void USkywalkerAbilitySystemComponent::AddSkillByLevelID(int32 InSkillLevelID)
+{
+	UDataTable* SkillLevelTable = nullptr;
+	SkillLevelTable = LoadObject<UDataTable>(nullptr, TEXT("/Script/Engine.DataTable'/SkywalkerGameplayAbilitySystem/Config/Data/Skywalker_DT_SkillLevel.Skywalker_DT_SkillLevel'"));
+	if (SkillLevelTable)
+	{
+		SkillLevelTable->AddToRoot();
+	}
+	
+	FSkywalkerSkillLevelTable* SkillLevelConfigs;
+	SkillLevelConfigs = SkillLevelTable->FindRow<FSkywalkerSkillLevelTable>(TEXT("1001001"), TEXT("1001001"));
+	if (SkillLevelConfigs ==nullptr)
+	{
+		return;
+	}
+	
+	UDataTable* SkillDataTable = nullptr;
+	SkillDataTable = LoadObject<UDataTable>(nullptr, TEXT("/Script/Engine.DataTable'/SkywalkerGameplayAbilitySystem/Config/Data/Skywalker_DT_SkillData.Skywalker_DT_SkillData'"));
+	if (SkillDataTable)
+	{
+		SkillDataTable->AddToRoot();
+	}
+	
+	FSkywalkerSkillDataTable* SkillDataConfigs;
+	SkillDataConfigs = SkillDataTable->FindRow<FSkywalkerSkillDataTable>(TEXT("1001"), TEXT("1001"));
+	if (SkillDataConfigs == nullptr)
+	{
+		return;
+	}
+	
+	AddSkillByConfig(*SkillDataConfigs, *SkillLevelConfigs);
+}
+
 // 移除技能
 void USkywalkerAbilitySystemComponent::RemoveSkill(int32 SkillID)
 {
