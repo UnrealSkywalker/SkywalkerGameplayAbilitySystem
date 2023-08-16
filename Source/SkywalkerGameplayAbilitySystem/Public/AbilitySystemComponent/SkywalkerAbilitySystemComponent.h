@@ -41,11 +41,6 @@ private:
 	SkywalkerSkillMap HasSkillMap;
 
 public:
-	
-	// 通过技能配置和等级配置增加技能
-	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
-
 	/**
 	* 通过技能等级ID增加技能
 	* @param	InSkillLevelID	技能等级ID
@@ -60,6 +55,12 @@ public:
 	// 通过技能ID获取技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
 		USkywalkerSkill* GetSkillByID(int32 SkillID) const;
+
+private:
+	/**
+	* 通过技能配置增加技能
+	*/
+	void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
 
 #pragma endregion
 	
