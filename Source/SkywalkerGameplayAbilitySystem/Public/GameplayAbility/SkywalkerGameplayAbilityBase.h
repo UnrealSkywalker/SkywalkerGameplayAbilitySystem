@@ -5,13 +5,13 @@
 #include "CoreMinimal.h"
 #include "Abilities/GameplayAbility.h"
 
-#include "SkillAttribute/SkywalkerSkillAttributeSet.h"
 #include "Include/SkywalkerGASEnum.h"
+#include "Include/SkywalkerGASStructure.h"
 
 #include "SkywalkerGameplayAbilityBase.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerGameplayAbilityBase : public UGameplayAbility
@@ -19,26 +19,27 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerGameplayAbilityBase : public 
 	GENERATED_BODY()
 
 public:
-	
+
 	USkywalkerGameplayAbilityBase(const FObjectInitializer& ObjectInitializer);
 
 #pragma region 技能属性
 
 protected:
 	// 技能属性集
-	USkywalkerSkillAttributeSet* SkillAttributeSet;
+	FSkywalkerSkillAttributeSet SkillAttributeSet;
 public:
 	// 设置技能等级属性集
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		void SetSkillAttributeSet(USkywalkerSkillAttributeSet* OtherSkillAttributeSet);
+	void SetSkillAttributeSet(const FSkywalkerSkillAttributeSet& OtherSkillAttributeSet);
 
 	// 清理技能属性集
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		void ClearSkillAttributeSet();
+	void ClearSkillAttributeSet();
 
 	// 获取某个技能属性的值
 	UFUNCTION(BlueprintCallable, Category = "Skywalker|SkillAttribute")
-		int32 GetSkillAttributeValue(ESkywalkerSkillAttributeType SkillAttributeType);
+	int32 GetSkillAttributeValue(ESkywalkerSkillAttributeType SkillAttributeType);
+
 #pragma endregion
 
 };

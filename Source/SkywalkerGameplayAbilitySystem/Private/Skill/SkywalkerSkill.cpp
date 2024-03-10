@@ -5,7 +5,6 @@
 
 USkywalkerSkill::USkywalkerSkill(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer)
 {
-	AbilityHandle = FGameplayAbilitySpecHandle();
 }
 
 // 设置技能数据配置

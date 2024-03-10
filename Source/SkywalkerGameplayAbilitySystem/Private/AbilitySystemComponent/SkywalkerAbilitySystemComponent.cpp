@@ -13,12 +13,12 @@ FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(
 	// 创建技能
 	USkywalkerGameplayAbilityBase* AddAbility = NewObject<USkywalkerGameplayAbilityBase>(this, SkillDataConfig.GameplayAbilityClass);
 
-	USkywalkerSkillAttributeSet* SkillAttributeSet = NewObject<USkywalkerSkillAttributeSet>();
+	FSkywalkerSkillAttributeSet SkillAttributeSet;
 
 	// 遍历技能等级配置的技能属性，添加到技能属性集中
 	for (int i = 0; i < SkillLevelConfig.SkillAttributes.Num(); i++)
 	{
-		SkillAttributeSet->AddSkillAttributeStruct(SkillLevelConfig.SkillAttributes[i]);
+		SkillAttributeSet.AddSkillAttributeStruct(SkillLevelConfig.SkillAttributes[i]);
 	}
 	
 	AddAbility->SetSkillAttributeSet(SkillAttributeSet);
@@ -92,6 +92,18 @@ void USkywalkerAbilitySystemComponent::RemoveSkill(int32 SkillID)
 USkywalkerSkill* USkywalkerAbilitySystemComponent::GetSkillByID(int32 SkillID) const
 {
 	return HasSkillMap.FindRef(SkillID);
+}
+
+bool USkywalkerAbilitySystemComponent::ActivateSkillByID(int32 SkillID)
+{
+	USkywalkerSkill* Skill = HasSkillMap.FindRef(SkillID);
+	if (Skill == nullptr)
+	{
+		return false;
+	}
+
+	// 激活技能
+	return TryActivateAbility(Skill->GetAbilityHandle());
 }
 
 void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig)

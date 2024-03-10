@@ -9,7 +9,6 @@
 #include "Include/SkywalkerGASConfigStructure.h"
 
 #include "GameplayAbility/SkywalkerGameplayAbilityBase.h"
-#include "SkillAttribute/SkywalkerSkillAttributeSet.h"
 #include "Skill/SkywalkerSkill.h"
 
 #include "SkywalkerAbilitySystemComponent.generated.h"
@@ -17,26 +16,26 @@
 typedef TMap<int32, USkywalkerSkill*> SkywalkerSkillMap;
 
 /**
- * 
+ *
  */
 UCLASS()
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
-	
+
 public:
-	
+
 	// 增加技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
-		FGameplayAbilitySpecHandle AddAbilityByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
-	
+	FGameplayAbilitySpecHandle AddAbilityByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
+
 	// 移除技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
-		void RemoveAbility(const FGameplayAbilitySpecHandle& AbilityHandle);
-	
+	void RemoveAbility(const FGameplayAbilitySpecHandle& AbilityHandle);
+
 #pragma region Skywalker Skill
 private:
-	
+
 	// 拥有的技能列表
 	SkywalkerSkillMap HasSkillMap;
 
@@ -46,15 +45,21 @@ public:
 	* @param	InSkillLevelID	技能等级ID
 	*/
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		void AddSkillByLevelID(int32 InSkillLevelID);
+	void AddSkillByLevelID(int32 InSkillLevelID);
 
 	// 移除技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		void RemoveSkill(int32 SkillID);
+	void RemoveSkill(int32 SkillID);
 
 	// 通过技能ID获取技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		USkywalkerSkill* GetSkillByID(int32 SkillID) const;
+	USkywalkerSkill* GetSkillByID(int32 SkillID) const;
+
+	/**
+	* 通过技能ID释放技能
+	*/
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
+	bool ActivateSkillByID(int32 SkillID);
 
 private:
 	/**
@@ -63,5 +68,5 @@ private:
 	void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
 
 #pragma endregion
-	
+
 };
