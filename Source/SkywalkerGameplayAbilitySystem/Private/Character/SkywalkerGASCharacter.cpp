@@ -4,7 +4,6 @@
 #include "Character/SkywalkerGASCharacter.h"
 
 FName  ASkywalkerGASCharacter::AbilitySystemComponentName(TEXT("AbilitySystemComponent"));
-FName  ASkywalkerGASCharacter::BaseAttributeName(TEXT("BaseAttribute"));
 
 // Sets default values
 ASkywalkerGASCharacter::ASkywalkerGASCharacter()
@@ -14,8 +13,6 @@ ASkywalkerGASCharacter::ASkywalkerGASCharacter()
 	
 	AbilitySystemComponent = CreateDefaultSubobject<USkywalkerAbilitySystemComponent>(ASkywalkerGASCharacter::AbilitySystemComponentName);
 
-	AttributeSetBase = NewObject<USkywalkerAttributeSetBase>(this, USkywalkerAttributeSetBase::StaticClass(), ASkywalkerGASCharacter::BaseAttributeName);
-	InitAttributeSet();
 }
 
 // Called when the game starts or when spawned
@@ -38,21 +35,6 @@ void ASkywalkerGASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerIn
 
 }
 
-#pragma region AttributeSet
-
-void ASkywalkerGASCharacter::InitAttributeSet()
-{
-	AttributeSetBase->InitHealth(100.f);
-	AttributeSetBase->InitMaxHealth(100.f);
-}
-
-USkywalkerAttributeSetBase* ASkywalkerGASCharacter::GetAttributeSetBase() const
-{
-	return AttributeSetBase;
-}
-
-#pragma endregion
-
 #pragma region Ability System Component
 
 USkywalkerAbilitySystemComponent* ASkywalkerGASCharacter::GetAbilitySystemComponent() const
@@ -73,8 +55,6 @@ void ASkywalkerGASCharacter::AddAbility(TSubclassOf<UGameplayAbility> AbilityToA
 	}
 	
 	AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(AbilityToAdd, 1));
-	
-	//AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 #pragma endregion
