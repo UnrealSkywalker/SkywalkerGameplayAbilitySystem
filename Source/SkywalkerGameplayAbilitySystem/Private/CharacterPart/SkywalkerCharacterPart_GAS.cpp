@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Character/SkywalkerCharacterPart_GAS.h"
+#include "CharacterPart/SkywalkerCharacterPart_GAS.h"
 
 FName  SkywalkerCharacterPart_GAS::AbilitySystemComponentName(TEXT("AbilitySystemComponent"));
 
