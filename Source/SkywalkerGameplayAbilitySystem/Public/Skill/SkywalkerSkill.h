@@ -11,7 +11,7 @@
 #include "SkywalkerSkill.generated.h"
 
 /**
- * 
+ *
  */
 UCLASS()
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerSkill : public UObject
@@ -20,19 +20,19 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerSkill : public UObject
 
 public:
 	USkywalkerSkill(const FObjectInitializer& ObjectInitializer);
-	
-private:
-	// 技能数据配置
-	UPROPERTY()
-		FSkywalkerSkillDataTable SkillDataConfig;
-	
-	// 技能等级配置
-	UPROPERTY()
-		FSkywalkerSkillLevelTable SkillLevelConfig;
 
+private:
 	// GameplayAbility Handle
 	UPROPERTY()
-		FGameplayAbilitySpecHandle AbilityHandle;
+	FGameplayAbilitySpecHandle AbilityHandle;
+
+	// 技能ID
+	UPROPERTY()
+	int32 SkillID = 0;
+
+	// 技能等级
+	UPROPERTY()
+	int32 SkillLevel = 0;
 
 public:
 	// 设置技能数据配置
@@ -43,20 +43,16 @@ public:
 
 	// 获取技能ID
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		int32 GetSkillID() const;
+	int32 GetSkillID() const;
 
 	// 获取技能等级
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		int32 GetSkillLevel() const;
-
-	// 获取GameplayAbility类
-	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		TSubclassOf<class USkywalkerGameplayAbilityBase> GetAbilityClass() const;
+	int32 GetSkillLevel() const;
 
 	// 设置GameplayAbility Handle
-	void SetAbilityHandle(const FGameplayAbilitySpecHandle& InAbilityHandle);
+	void SetAbilityHandle(FGameplayAbilitySpecHandle InAbilityHandle);
 
 	// 获取GameplayAbility Handle
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-		FGameplayAbilitySpecHandle GetAbilityHandle() const;
+	FGameplayAbilitySpecHandle GetAbilityHandle() const;
 };
