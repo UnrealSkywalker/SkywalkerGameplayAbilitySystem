@@ -18,7 +18,7 @@ typedef TMap<int32, USkywalkerSkill*> SkywalkerSkillMap;
 /**
  *
  */
-UCLASS()
+UCLASS(ClassGroup = Skywalker, hidecategories = (Object, LOD, Lighting, Transform, Sockets, TextureStreaming), editinlinenew, meta = (BlueprintSpawnableComponent))
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : public UAbilitySystemComponent
 {
 	GENERATED_BODY()
