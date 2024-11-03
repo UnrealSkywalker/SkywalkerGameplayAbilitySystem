@@ -13,7 +13,7 @@
 
 #include "SkywalkerAbilitySystemComponent.generated.h"
 
-typedef TMap<int32, USkywalkerSkill*> SkywalkerSkillMap;
+typedef TMap<int32, USkywalkerSkill *> SkywalkerSkillMap;
 
 /**
  *
@@ -24,26 +24,24 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : publ
 	GENERATED_BODY()
 
 public:
-
 	// 增加技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
-	FGameplayAbilitySpecHandle AddAbilityByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
+	FGameplayAbilitySpecHandle AddAbilityByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig);
 
 	// 移除技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
-	void RemoveAbility(const FGameplayAbilitySpecHandle& AbilityHandle);
+	void RemoveAbility(const FGameplayAbilitySpecHandle &AbilityHandle);
 
 #pragma region Skywalker Skill
 private:
-
 	// 拥有的技能列表
 	SkywalkerSkillMap HasSkillMap;
 
 public:
 	/**
-	* 通过技能等级ID增加技能
-	* @param	InSkillLevelID	技能等级ID
-	*/
+	 * 通过技能等级ID增加技能
+	 * @param	InSkillLevelID	技能等级ID
+	 */
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
 	void AddSkillByLevelID(int32 InSkillLevelID);
 
@@ -53,20 +51,19 @@ public:
 
 	// 通过技能ID获取技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
-	USkywalkerSkill* GetSkillByID(int32 SkillID) const;
+	USkywalkerSkill *GetSkillByID(int32 SkillID) const;
 
 	/**
-	* 通过技能ID释放技能
-	*/
+	 * 通过技能ID释放技能
+	 */
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Skill")
 	bool ActivateSkillByID(int32 SkillID);
 
 private:
 	/**
-	* 通过技能配置增加技能
-	*/
-	void AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig);
+	 * 通过技能配置增加技能
+	 */
+	void AddSkillByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig);
 
 #pragma endregion
-
 };

@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "AbilitySystemComponent/SkywalkerAbilitySystemComponent.h"
+#include "Component/SkywalkerAbilitySystemComponent.h"
 
 // 增加技能
 FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig)
