@@ -3,7 +3,7 @@
 #include "AbilitySystemComponent/SkywalkerAbilitySystemComponent.h"
 
 // 增加技能
-FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig)
+FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig)
 {
 	if (SkillLevelConfig.GetSkillID() != SkillDataConfig.GetSkillID())
 	{
@@ -11,7 +11,7 @@ FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(
 	}
 
 	// 创建技能
-	USkywalkerGameplayAbilityBase* AddAbility = NewObject<USkywalkerGameplayAbilityBase>(this, SkillDataConfig.GameplayAbilityClass);
+	USkywalkerGameplayAbilityBase *AddAbility = NewObject<USkywalkerGameplayAbilityBase>(this, SkillDataConfig.GameplayAbilityClass);
 
 	FSkywalkerSkillAttributeSet SkillAttributeSet;
 
@@ -20,7 +20,7 @@ FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(
 	{
 		SkillAttributeSet.AddSkillAttributeStruct(SkillLevelConfig.SkillAttributes[i]);
 	}
-	
+
 	AddAbility->SetSkillAttributeSet(SkillAttributeSet);
 
 	// 返回技能规格句柄
@@ -30,7 +30,7 @@ FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(
 }
 
 // 移除技能
-void USkywalkerAbilitySystemComponent::RemoveAbility(const FGameplayAbilitySpecHandle& AbilityHandle)
+void USkywalkerAbilitySystemComponent::RemoveAbility(const FGameplayAbilitySpecHandle &AbilityHandle)
 {
 	// 移除技能
 	ClearAbility(AbilityHandle);
@@ -40,7 +40,7 @@ void USkywalkerAbilitySystemComponent::RemoveAbility(const FGameplayAbilitySpecH
 
 void USkywalkerAbilitySystemComponent::AddSkillByLevelID(int32 InSkillLevelID)
 {
-	UDataTable* SkillLevelTable = nullptr;
+	UDataTable *SkillLevelTable = nullptr;
 	SkillLevelTable = LoadObject<UDataTable>(nullptr, TEXT("/Script/Engine.DataTable'/SkywalkerGameplayAbilitySystem/Config/Data/Skywalker_DT_SkillLevel.Skywalker_DT_SkillLevel'"));
 	if (SkillLevelTable)
 	{
@@ -48,14 +48,14 @@ void USkywalkerAbilitySystemComponent::AddSkillByLevelID(int32 InSkillLevelID)
 	}
 
 	FName NameSkillLevelID = FName(*FString::FromInt(InSkillLevelID));
-	FSkywalkerSkillLevelTable* SkillLevelConfigs;
+	FSkywalkerSkillLevelTable *SkillLevelConfigs;
 	SkillLevelConfigs = SkillLevelTable->FindRow<FSkywalkerSkillLevelTable>(NameSkillLevelID, TEXT("SkillLevelID"));
-	if (SkillLevelConfigs ==nullptr)
+	if (SkillLevelConfigs == nullptr)
 	{
 		return;
 	}
-	
-	UDataTable* SkillDataTable = nullptr;
+
+	UDataTable *SkillDataTable = nullptr;
 	SkillDataTable = LoadObject<UDataTable>(nullptr, TEXT("/Script/Engine.DataTable'/SkywalkerGameplayAbilitySystem/Config/Data/Skywalker_DT_SkillData.Skywalker_DT_SkillData'"));
 	if (SkillDataTable)
 	{
@@ -63,21 +63,21 @@ void USkywalkerAbilitySystemComponent::AddSkillByLevelID(int32 InSkillLevelID)
 	}
 
 	FName NameSkillID = FName(*FString::FromInt(SkillLevelConfigs->GetSkillID()));
-	
-	FSkywalkerSkillDataTable* SkillDataConfigs;
+
+	FSkywalkerSkillDataTable *SkillDataConfigs;
 	SkillDataConfigs = SkillDataTable->FindRow<FSkywalkerSkillDataTable>(NameSkillID, TEXT("SkillID"));
 	if (SkillDataConfigs == nullptr)
 	{
 		return;
 	}
-	
+
 	AddSkillByConfig(*SkillDataConfigs, *SkillLevelConfigs);
 }
 
 // 移除技能
 void USkywalkerAbilitySystemComponent::RemoveSkill(int32 SkillID)
 {
-	USkywalkerSkill* Skill = HasSkillMap.FindRef(SkillID);
+	USkywalkerSkill *Skill = HasSkillMap.FindRef(SkillID);
 	if (Skill == nullptr)
 	{
 		return;
@@ -89,14 +89,14 @@ void USkywalkerAbilitySystemComponent::RemoveSkill(int32 SkillID)
 }
 
 // 通过技能ID获取技能
-USkywalkerSkill* USkywalkerAbilitySystemComponent::GetSkillByID(int32 SkillID) const
+USkywalkerSkill *USkywalkerAbilitySystemComponent::GetSkillByID(int32 SkillID) const
 {
 	return HasSkillMap.FindRef(SkillID);
 }
 
 bool USkywalkerAbilitySystemComponent::ActivateSkillByID(int32 SkillID)
 {
-	USkywalkerSkill* Skill = HasSkillMap.FindRef(SkillID);
+	USkywalkerSkill *Skill = HasSkillMap.FindRef(SkillID);
 	if (Skill == nullptr)
 	{
 		return false;
@@ -106,7 +106,7 @@ bool USkywalkerAbilitySystemComponent::ActivateSkillByID(int32 SkillID)
 	return TryActivateAbility(Skill->GetAbilityHandle());
 }
 
-void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDataTable& SkillDataConfig, const FSkywalkerSkillLevelTable& SkillLevelConfig)
+void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig)
 {
 	if (SkillLevelConfig.GetSkillID() != SkillDataConfig.GetSkillID())
 	{
@@ -114,7 +114,7 @@ void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDat
 	}
 
 	// 先找到技能
-	USkywalkerSkill* Skill = HasSkillMap.FindRef(SkillDataConfig.GetSkillID());
+	USkywalkerSkill *Skill = HasSkillMap.FindRef(SkillDataConfig.GetSkillID());
 	if (Skill == nullptr)
 	{
 		// 创建技能
