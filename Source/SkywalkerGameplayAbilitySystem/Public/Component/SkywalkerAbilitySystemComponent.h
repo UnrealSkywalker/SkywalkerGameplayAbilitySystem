@@ -23,6 +23,8 @@ class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAbilitySystemComponent : publ
 {
 	GENERATED_BODY()
 
+#pragma region Skill
+
 public:
 	// 增加技能
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
@@ -32,7 +34,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Ability")
 	void RemoveAbility(const FGameplayAbilitySpecHandle &AbilityHandle);
 
-#pragma region Skywalker Skill
 private:
 	// 拥有的技能列表
 	SkywalkerSkillMap HasSkillMap;
@@ -65,5 +66,5 @@ private:
 	 */
 	void AddSkillByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig);
 
-#pragma endregion
+#pragma endregion Skill
 };
