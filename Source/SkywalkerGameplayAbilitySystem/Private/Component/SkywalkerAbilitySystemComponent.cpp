@@ -2,6 +2,8 @@
 
 #include "Component/SkywalkerAbilitySystemComponent.h"
 
+#pragma region Skywalker Skill
+
 // 增加技能
 FGameplayAbilitySpecHandle USkywalkerAbilitySystemComponent::AddAbilityByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig)
 {
@@ -35,8 +37,6 @@ void USkywalkerAbilitySystemComponent::RemoveAbility(const FGameplayAbilitySpecH
 	// 移除技能
 	ClearAbility(AbilityHandle);
 }
-
-#pragma region Skywalker Skill
 
 void USkywalkerAbilitySystemComponent::AddSkillByLevelID(int32 InSkillLevelID)
 {
@@ -132,4 +132,17 @@ void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDat
 	}
 }
 
-#pragma endregion
+#pragma endregion Skywalker Skill
+
+#pragma region Skywalker Attribute
+
+void USkywalkerAbilitySystemComponent::InitAttributeSet()
+{
+	for (int i = 0; i < AttributeSetClasses.Num(); i++)
+	{
+		// TODO Shyfan 需要判断是否已经存在
+		GetOrCreateAttributeSubobject(AttributeSetClasses[i]);
+	}
+}
+
+#pragma endregion Skywalker Attribute

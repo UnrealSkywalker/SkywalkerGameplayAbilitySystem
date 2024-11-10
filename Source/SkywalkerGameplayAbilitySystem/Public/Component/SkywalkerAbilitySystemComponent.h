@@ -67,4 +67,23 @@ private:
 	void AddSkillByConfig(const FSkywalkerSkillDataTable &SkillDataConfig, const FSkywalkerSkillLevelTable &SkillLevelConfig);
 
 #pragma endregion Skill
+
+#pragma region Attribute
+
+public:
+	/**
+	 * 属性集类
+	 * 可在蓝图中增加和删除
+	 */
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttributeSetClass")
+	TArray<TSubclassOf<UAttributeSet>> AttributeSetClasses;
+
+	/**
+	 * 初始化属性集
+	 * 可在蓝图中调用
+	 */
+	UFUNCTION(BlueprintCallable, Category = "SkywalkerGAS|Attribute")
+	void InitAttributeSet();
+
+#pragma endregion Attribute
 };
