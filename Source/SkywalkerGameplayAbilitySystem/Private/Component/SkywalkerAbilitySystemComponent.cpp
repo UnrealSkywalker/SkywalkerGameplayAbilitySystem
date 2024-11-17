@@ -138,10 +138,10 @@ void USkywalkerAbilitySystemComponent::AddSkillByConfig(const FSkywalkerSkillDat
 
 void USkywalkerAbilitySystemComponent::InitAttributeSet()
 {
-	for (int i = 0; i < AttributeSetClasses.Num(); i++)
+	for (int i = 0; i < AttributeSetArray.Num(); i++)
 	{
 		// TODO Shyfan 需要判断是否已经存在
-		GetOrCreateAttributeSubobject(AttributeSetClasses[i]);
+		GetOrCreateAttributeSubobject(AttributeSetArray[i]);
 	}
 }
 

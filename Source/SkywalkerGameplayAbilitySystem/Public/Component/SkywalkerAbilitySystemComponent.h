@@ -75,8 +75,8 @@ public:
 	 * 属性集类
 	 * 可在蓝图中增加和删除
 	 */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttributeSetClass")
-	TArray<TSubclassOf<UAttributeSet>> AttributeSetClasses;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttributeSet")
+	TArray<TSubclassOf<UAttributeSet>> AttributeSetArray;
 
 	/**
 	 * 初始化属性集

@@ -8,6 +8,7 @@
 /**
  * 物理属性集
  * 类似 物理伤害，护甲这种物理属性
+ * 屬性加上 _Physical 是为了方便拷贝到其他属性集
  */
 UCLASS()
 class SKYWALKERGAMEPLAYABILITYSYSTEM_API USkywalkerAttributeSet_Physical : public UAttributeSet
